@@ -1,0 +1,31 @@
+body {
+    padding-top: 85px;
+    font-family: 'Arvo', serif;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+    text-indent: 3em;
+    padding-left:20px;
+}
+
+#custom-nav {
+    background: #E82D2D;
+    opacity: 0.8;
+}
+
+#head-shot {
+    border-radius: 50%;
+    width:100%;
+}
+
+.navbar-default .navbar-brand {
+    color: white;
+    font-weight:bold;
+    padding-left: 60px;
+}
+
+.navbar-default .navbar-brand:hover {
+    color: #EDEDED;
+}
