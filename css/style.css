@@ -24,10 +24,11 @@ a.active {
 .me {
     margin: 0;
     background-image:
-    linear-gradient( rgba(0,0,0,.3), rgba(0,0,0,.3) ),
+    linear-gradient( rgba(0,0,0,.4), rgba(0,0,0,.4) ),
     url('http://wallpapercave.com/wp/Tb3g7Fv.jpg');    
     background-size: 100% 100%;
     background-repeat:no-repeat;
+    height: 100vh;
 }
 h1,
 h2,
