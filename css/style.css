@@ -21,6 +21,10 @@ a.active {
   color: #18BC9C;
   outline: none;
 }
+.btn-cb {
+    margin: 0px 5px;
+    font-size: 1em;
+}
 .me {
     margin: 0;
     background-image:
@@ -86,6 +90,9 @@ header .intro-text .skills {
   text-transform: uppercase;
   font-weight: 700;
   border: none;
+}
+.navbar-custom.affix {
+    background: rgba(85, 68, 104, 1);
 }
 .navbar-custom a:focus {
   outline: none;
