@@ -21,6 +21,16 @@ a.active {
   color: #18BC9C;
   outline: none;
 }
+
+.me {
+    margin: 0;
+    background-image:
+    linear-gradient( rgba(0,0,0,.3), rgba(0,0,0,.3) ),
+    url('http://wallpapercave.com/wp/Tb3g7Fv.jpg');    
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+}
+
 h1,
 h2,
 h3,
@@ -69,7 +79,7 @@ hr.star-primary:after {
 }
 header {
   text-align: center;
-  background: #C1F7DC;
+  background: #bfbfbf;
   color: white;
 }
 header .container {
@@ -79,6 +89,7 @@ header .container {
 header img {
   display: block;
   margin: 0 auto 20px;
+  border-radius: 15%;
 }
 header .intro-text .name {
   display: block;
@@ -104,7 +115,7 @@ header .intro-text .skills {
   }
 }
 .navbar-custom {
-  background: #9868a4;
+  background: rgba(85, 68, 104, 0.90);
   font-family: "Montserrat", "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-transform: uppercase;
   font-weight: 700;
