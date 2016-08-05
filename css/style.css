@@ -197,7 +197,7 @@ section h2 {
   font-size: 3em;
 }
 section.success {
-  background: #C3D2D5;
+  background: #909894;
   color: white;
 }
 @media (max-width: 767px) {
@@ -313,7 +313,7 @@ footer h3 {
 }
 footer .footer-above {
   padding-top: 50px;
-  background-color: #9868a4;
+  background-color: rgba(129, 62, 146, 0.8);;
 }
 footer .footer-col {
   margin-bottom: 50px;
