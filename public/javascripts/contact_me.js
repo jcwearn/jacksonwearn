@@ -23,14 +23,13 @@ $(function() {
       $.ajax({
         url: "/contact",
         type: "POST",
-        data: {
+        data: JSON.stringify({
           name: name,
           phone: phone,
           email: email,
           message: message
-        },
+        }),
         contentType:"application/json; charset=utf-8",
-        dataType:"json",
         cache: false,
         success: function() {
           // Enable button & show success message
