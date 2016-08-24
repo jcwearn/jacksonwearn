@@ -24,7 +24,7 @@ a.active {
     margin: 0;
     background-image:
     linear-gradient( rgba(0,0,0,.4), rgba(0,0,0,.4) ),
-    url('https://s3.amazonaws.com/jacksonwearn.com/img/background.jpg');    
+    url('../images/background.jpg');    
     background-size: 100% 100%;
     background-repeat:no-repeat;
     height: 100vh;
