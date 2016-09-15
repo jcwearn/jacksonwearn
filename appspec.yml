@@ -5,8 +5,5 @@ files:
     destination: /home/ubuntu/jacksonwearn
 hooks:
   AfterInstall:
-    - location: deploy/install_deps
-      runas: root
-  ApplicationStart:
-    - location: deploy/configure_deps
+    - location: deploy/deploy_strongloop
       runas: root
