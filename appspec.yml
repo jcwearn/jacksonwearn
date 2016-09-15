@@ -1,0 +1,12 @@
+version: 0.0
+os: linux
+files:
+  - source: /
+    destination: /home/ubuntu/jacksonwearn
+hooks:
+  AfterInstall:
+    - location: deploy/install_deps
+      runas: root
+  ApplicationStart:
+    - location: deploy/configure_deps
+      runas: root
