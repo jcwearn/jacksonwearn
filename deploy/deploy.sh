@@ -25,5 +25,4 @@ else
         aws deploy create-deployment  --application-name $APPLICATION_NAME --region=us-east-1 --deployment-group-name $DEPLOYMENT_GROUP_NAME --s3-location bucket=$BUCKET,bundleType=tgz,key=deployments/$FILE
         rm -rf $FILE
     fi
-    rm production
 fi
