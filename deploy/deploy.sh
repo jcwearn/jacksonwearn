@@ -3,8 +3,8 @@ FILE=jacksonwearn.com-$DATE.tar.gz
 EXCLUDE="./node_modules"
 EXCLUDE2="*.tar.gz"
 EXCLUDE3="./.git"
-APPLICATION_NAME=jacksonwearn.com
-DEPLOYMENT_GROUP_NAME=jacksonwearn.com-deployment
+APPLICATION_NAME=jacksonwearn
+DEPLOYMENT_GROUP_NAME=jacksonwearn-deployment
 BUCKET=jacksonwearn.com
 
 if [ ! -f ./package.json ]; then
