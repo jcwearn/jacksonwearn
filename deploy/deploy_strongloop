@@ -1,0 +1,14 @@
+#!/bin/bash
+
+aws s3 cp s3://jacksonwearn.com/app.env /home/ubuntu/app.env --region us-east-1
+ENV_FILE='/home/ubuntu/app.env'
+
+cd /home/ubuntu/jacksonwearn/
+
+slc build
+
+slc ctl env-set jackson PORT=$(grep PORT $ENV_FILE | awk '{ print $2 }')
+slc ctl env-set jackson EMAIL=$(grep EMAIL $ENV_FILE | awk '{ print $2 }')
+slc ctl env-set jackson EMAIL_PASS=$(grep EMAIL_PASS $ENV_FILE | awk '{ print $2 }')
+
+slc deploy --service=jackson
