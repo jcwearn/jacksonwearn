@@ -11,7 +11,7 @@ var app = express();
 
 app.set('views', path.join(__dirname, 'views'));
 
-app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
+app.use(favicon(path.join(__dirname, 'public', 'images', 'favicon.ico')));
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -35,7 +35,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  var errorPage = path.join(__dirname, "../", "views/error.html");
+  var errorPage = path.join(__dirname, "views", "error.html");
   res.sendFile(errorPage);
 });
 
