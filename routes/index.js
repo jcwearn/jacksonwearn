@@ -6,8 +6,11 @@ var nodemailer = require('nodemailer');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  debugger;
   res.render('index');
+});
+
+router.get('/connect-four', function(req, res, next) {
+  res.render('connect');
 });
 
 router.get('/google471c4d725062c531.html', function(req, res,  next) {
