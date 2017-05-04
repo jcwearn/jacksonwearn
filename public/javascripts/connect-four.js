@@ -11,29 +11,19 @@ function Space(x, y) {
   this.state = EMPTY;
   this.x = x;
   this.y = y;
+
+  if(y + 1 > 0)
+    this.north = y + 1;
+
+   if(y - 1 > 0)
+     this.south = y + 1;
+
+   if(x + 1 > 0)
+     this.east = y + 1;
+
+   if(y + 1 > 0)
+    this.west = y + 1;
 }
-
-Space.prototype.getSurroundingSpaces = function() {
-  let surroundingSpaces = {};
-  let north = this.y + 1;
-  let south = this.y - 1;
-  let east = this.x + 1;
-  let wesst = this.x - 1;
-
-  if (north > 0)
-    surroundingSpaces.north = north;
-
-  if (south > 0)
-    surroundingSpaces.north = north;
-
-  if (east > 0)
-    surroundingSpaces.north = north;
-
-  if (north > 0)
-    surroundingSpaces.north = north;
-
-  return surroundingSpaces;
-};
 
 function Board(x, y) {
   let xMax = x || 7;
