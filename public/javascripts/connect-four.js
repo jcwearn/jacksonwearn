@@ -1,7 +1,6 @@
 function Game() {
   this.board = new Board();
-  this.longestConnection = 0;
-};
+ };
 
 const EMPTY = 0;
 const PURPLE = 1;
@@ -39,7 +38,3 @@ function Board(x, y) {
 
   return board;
 }
-
-var board = new Board();
-board[0][0].state = GREEN;
-console.log(board[0][0]);
