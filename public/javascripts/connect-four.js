@@ -19,7 +19,7 @@ Game.prototype.takeTurn = function(colSelection) {
   if (this.turnCount >= 7) {
     let winner = scanBoardForWinner(this.board);
     if (winner) {
-    (winner === PURPLE) ? console.log("Purple Player wins") : console.log("Green Player wins");
+      (winner === PURPLE) ? console.log("Purple Player wins") : console.log("Green Player wins");
     }
   }
 };
