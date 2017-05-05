@@ -6,10 +6,6 @@ function Game() {
   this.board = new Board();
   this.playerTurn = PURPLE;
   this.turnCount = 0;
-  this.connections = {
-    PURPLE: [],
-    GREEN: []
-  };
 };
 
 Game.prototype.takeTurn = function(colSelection) {
@@ -19,43 +15,80 @@ Game.prototype.takeTurn = function(colSelection) {
   else
     this.playerTurn = PURPLE;
 
-  this.turnCount++;
-  scanBoardForConnections(this.board);
-};
-
-function scanBoardForConnections(board) {
-  let spaces = board.spaces;
-  for(let x = 0; x < spaces.length; x++) {
-    let col = spaces[x];
-    for(let y = 0; y < col.length; y++) {
-      let space = spaces[x][y];
-      getConnections(board, space);
+  this.turnCount = this.turnCount + 1;
+  if (this.turnCount >= 7) {
+    let winner = scanBoardForWinner(this.board);
+    if (winner) {
+    (winner === PURPLE) ? console.log("Purple Player wins") : console.log("Green Player wins");
     }
   }
 };
 
-function getConnections(board, space) {
+function scanBoardForWinner(board) {
+  let spaces = board.spaces;
+  var winner = 0;
+
+  outerLoop:
+  for(var x in spaces) {
+    let col = spaces[x];
+    innerLoop:
+    for(var y in col) {
+      let space = spaces[x][y];
+      if (space.state !== EMPTY) {
+	winner = checkConnectFour(board, space);
+	if (winner) {
+	  break outerLoop;
+	}
+      }
+    }
+  }
+
+  return winner;
+};
+
+function checkConnectFour(board, space) {
   let x = space.x;
   let y = space.y;
   let neighbors = space.neighbors;
+  let connectionLength;
 
   neighbors.forEach(function(neighbor) {
     if(isValidSpace(neighbor.x, neighbor.y, board.xMax, board.yMax)) {
-      var neighborSpace = board.spaces[neighbor.x][neighbor.y];
-      if (space.state == neighborSpace.state) {
-	checkNextSpace(board, neighborSpace.direction);
+      let neighborSpace = board.spaces[neighbor.x][neighbor.y];
+      if (space.state === neighborSpace.state) {
+	connectionLength = checkNextSpace(board, neighborSpace, neighbor.direction, 2);
       }
     }
   });
+
+  if (connectionLength === 4) {
+    return space.state;
+  }
+}
+
+function checkNextSpace(board, space, direction, connectionLength)  {
+  if (connectionLength === 4) {
+    return connectionLength;
+  } else {
+    let neighborCoordinates = space.neighbors.filter(function(value) { return value.direction === direction; });
+    let x = neighborCoordinates[0].x;
+    let y = neighborCoordinates[0].y;
+    if(isValidSpace(x, y, board.xMax, board.yMax)) {
+      let neighborSpace = board.spaces[x][y];
+      if(neighborSpace.state === space.state) {
+	return checkNextSpace(board, neighborSpace, direction, connectionLength + 1);
+      } else {
+	return connectionLength;
+      }
+    } else {
+      return connectionLength - 1;
+    }
+  }
 }
 
 function isValidSpace(x, y, xMax, yMax) {
   if (x >= 0 && x <= xMax && y >= 0 && y <= yMax)
     return true;
-}
-
-function checkNextSpace(board, direction) {
-
 }
 
 function updateBoard(board, colSelection, color) {
@@ -125,10 +158,3 @@ function getCol(board, colNum) {
   if(row && row.length)
     return row;
 }
-
-var game = new Game();
-game.takeTurn(0);
-game.takeTurn(1);
-game.takeTurn(0);
-game.takeTurn(1);
-debugger;
