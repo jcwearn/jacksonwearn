@@ -5,12 +5,15 @@ const GREEN = 2;
 function Game() {
   this.board = new Board();
   this.playerTurn = PURPLE;
+  this.turnCount = 0;
 };
 
-function Space(x, y) {
+Game.takeTurn = {
+
+};
+
+function Space() {
   this.state = EMPTY;
-  this.x = x;
-  this.y = y;
 }
 
 function Board(x, y) {
@@ -21,7 +24,7 @@ function Board(x, y) {
   for (let x = 0; x < xMax; x++) {
     board[x] = new Array();
     for (let y = 0; y < yMax; y++) {
-      board[x][y] = new Space(x, y);
+      board[x][y] = new Space();
     }
   }
 
