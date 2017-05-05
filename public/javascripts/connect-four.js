@@ -6,7 +6,10 @@ function Game() {
   this.board = new Board();
   this.playerTurn = PURPLE;
   this.turnCount = 0;
-  this.connections = [];
+  this.connections = {
+    PURPLE: [],
+    GREEN: []
+  };
 };
 
 Game.prototype.takeTurn = function(colSelection) {
@@ -17,12 +20,16 @@ Game.prototype.takeTurn = function(colSelection) {
     this.playerTurn = PURPLE;
 
   this.turnCount++;
+  scanBoardForConnections(this.board);
 };
 
-function scanForConnections(board) {
+function scanBoardForConnections(board) {
   let purpleSpaces = [];
   let greenSpaces = [];
-  let connections = [];
+  let connections = {
+    PURPLE: [],
+    GREEN: []
+  };;
 
   board.spaces.forEach(function(col) {
     let purp = col.filter(function(space) { return space.state === PURPLE; });
@@ -37,8 +44,19 @@ function scanForConnections(board) {
     }
   });
 
+  let purpleConnections = scanSpacesForConnections(purpleSpaces);
+  let greenConnections = scanSpacesForConnections(greenSpaces);
+
   return connections;
 };
+
+function scanSpacesForConnections(spaces) {
+  var connections = [];
+  if (spaces.length) {
+    //debugger;
+  }
+  return connections;
+}
 
 function updateBoard(board, colSelection, color) {
   let col = getCol(board, colSelection);
@@ -61,7 +79,23 @@ function Space(x, y) {
   this.state = EMPTY;
   this.x = x;
   this.y = y;
+  this.neighbors = setNeighbors(x, y);
 }
+
+function setNeighbors(x, y) {
+  let neighbors = {
+    northWest: { x: x - 1, y: y + 1 },
+    north:     { x: x    , y: y + 1 },
+    northEast: { x: x + 1, y: y + 1 },
+    east:      { x: x - 1, y: y     },
+    west:      { x: x + 1, y: y     },
+    southWest: { x: x - 1, y: y - 1 },
+    south:     { x: x    , y: y - 1 },
+    southEast: { x: x + 1, y: y - 1 }
+  };
+
+  return neighbors;
+};
 
 function Board(x, y) {
   let xMax = x || 7;
@@ -94,7 +128,7 @@ function getCol(board, colNum) {
 
 var game = new Game();
 game.takeTurn(0);
+game.takeTurn(1);
 game.takeTurn(0);
-game.takeTurn(0);
-game.takeTurn(0);
-game.scanForConnections();
+game.takeTurn(1);
+debugger;
