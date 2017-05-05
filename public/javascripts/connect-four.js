@@ -16,18 +16,22 @@ function Space(x, y) {
 function Board(x, y) {
   let xMax = x || 7;
   let yMax = y || 6;
-  let spaces = new Array();
+  let board = new Array();
 
   for (let x = 0; x < xMax; x++) {
-    spaces[x] = new Array();
+    board[x] = new Array();
     for (let y = 0; y < yMax; y++) {
-      spaces[x][y] = new Space(x, y);
+      board[x][y] = new Space(x, y);
     }
   }
 
-  this.spaces = spaces;
+  return board;
 }
 
-Board.getSpace = function(x, y) {
-  return this.spaces[x][y];
-};
+function getRow(board, rowNum) {
+  return board[rowNum];
+}
+
+function getCol(board, colNum) {
+  return board.map(function(value) { return value[colNum]; });
+}
