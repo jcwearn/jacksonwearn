@@ -29,10 +29,34 @@ function scanBoardForConnections(board) {
     let col = spaces[x];
     for(let y = 0; y < col.length; y++) {
       let space = spaces[x][y];
-      debugger;
+      getConnections(board, space);
     }
   }
 };
+
+function getConnections(board, space) {
+  let x = space.x;
+  let y = space.y;
+  let neighbors = space.neighbors;
+
+  neighbors.forEach(function(neighbor) {
+    if(isValidSpace(neighbor.x, neighbor.y, board.xMax, board.yMax)) {
+      var neighborSpace = board.spaces[neighbor.x][neighbor.y];
+      if (space.state == neighborSpace.state) {
+	checkNextSpace(board, neighborSpace.direction);
+      }
+    }
+  });
+}
+
+function isValidSpace(x, y, xMax, yMax) {
+  if (x >= 0 && x <= xMax && y >= 0 && y <= yMax)
+    return true;
+}
+
+function checkNextSpace(board, direction) {
+
+}
 
 function updateBoard(board, colSelection, color) {
   let col = getCol(board, colSelection);
@@ -59,16 +83,16 @@ function Space(x, y) {
 }
 
 function setNeighbors(x, y) {
-  let neighbors = {
-    northWest: { x: x - 1, y: y + 1 },
-    north:     { x: x    , y: y + 1 },
-    northEast: { x: x + 1, y: y + 1 },
-    east:      { x: x - 1, y: y     },
-    west:      { x: x + 1, y: y     },
-    southWest: { x: x - 1, y: y - 1 },
-    south:     { x: x    , y: y - 1 },
-    southEast: { x: x + 1, y: y - 1 }
-  };
+  let neighbors = [
+    { direction: "NW", x: x - 1, y: y + 1 },
+    { direction: "N" , x: x    , y: y + 1 },
+    { direction: "NE", x: x + 1, y: y + 1 },
+    { direction: "E" , x: x - 1, y: y     },
+    { direction: "W" , x: x + 1, y: y     },
+    { direction: "SW", x: x - 1, y: y - 1 },
+    { direction: "S" , x: x    , y: y - 1 },
+    { direction: "SE", x: x + 1, y: y - 1 }
+  ];
 
   return neighbors;
 };
@@ -86,8 +110,8 @@ function Board(x, y) {
   }
 
   this.spaces = spaces;
-  this.rowLen = yMax;
-  this.colLen = xMax;
+  this.xMax = xMax - 1;
+  this.yMax = yMax - 1;
 }
 
 function getRow(board, rowNum) {
