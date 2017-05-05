@@ -3,13 +3,14 @@ const PURPLE = 1;
 const GREEN = 2;
 
 function Game() {
-  this.board = initBoard();
+  this.board = new Board();
   this.playerTurn = PURPLE;
   this.turnCount = 0;
+  this.connections = [];
 };
 
 Game.prototype.takeTurn = function(colSelection) {
-  this.board = updateBoard(this.board, colSelection, this.playerTurn);
+  this.board.spaces = updateBoard(this.board.spaces, colSelection, this.playerTurn);
   if (this.playerTurn === PURPLE)
     this.playerTurn = GREEN;
   else
@@ -19,10 +20,15 @@ Game.prototype.takeTurn = function(colSelection) {
 };
 
 Game.prototype.scanForConnections = function() {
-  let numRows = this.board[0].length;
-  for (let i; i < numRows; i++) {
-    let row = getRow(this.board, i);
+  let board = this.board.spaces;
+  let connections = this.connections;
 
+  for(let x = 0; x < board.length; x++) {
+    let row = board[x];
+    for(let y = 0; y < row.length; y++) {
+      let space = board[x][y];
+      checkSurroundingSpaces(board, space);
+    }
   }
 };
 
@@ -43,25 +49,43 @@ function updateBoard(board, colSelection, color) {
   return board;
 }
 
+function checkSurroundingSpaces(board, space) {
+  let x = space.x;
+  let y = space.y;
+  let north;
+  let south;
+  let east;
+  let west;
+
+  if (y + 1 >= 0 )
+    north = y + 1;
+  if (y - 1 >= 0)
+    south = y - 1;
+  if (x + 1 >= 0)
+    console.log();
+}
+
 function Space(x, y) {
   this.state = EMPTY;
   this.x = x;
   this.y = y;
 }
 
-function initBoard(x, y) {
+function Board(x, y) {
   let xMax = x || 7;
   let yMax = y || 6;
-  let board = new Array();
+  let spaces = new Array();
 
   for (let x = 0; x < xMax; x++) {
-    board[x] = new Array();
+    spaces[x] = new Array();
     for (let y = 0; y < yMax; y++) {
-      board[x][y] = new Space(x, y);
+      spaces[x][y] = new Space(x, y);
     }
   }
 
-  return board;
+  this.spaces = spaces;
+  this.rowLength = x;
+  this.colLenght = y;
 }
 
 function getRow(board, rowNum) {
