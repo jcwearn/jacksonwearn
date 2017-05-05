@@ -22,14 +22,6 @@ Game.prototype.takeTurn = function(colSelection) {
 Game.prototype.scanForConnections = function() {
   let board = this.board.spaces;
   let connections = this.connections;
-
-  for(let x = 0; x < board.length; x++) {
-    let row = board[x];
-    for(let y = 0; y < row.length; y++) {
-      let space = board[x][y];
-      checkSurroundingSpaces(board, space);
-    }
-  }
 };
 
 function updateBoard(board, colSelection, color) {
@@ -47,22 +39,6 @@ function updateBoard(board, colSelection, color) {
   let y = spaceToUpdate.y;
   board[x][y].state = color;
   return board;
-}
-
-function checkSurroundingSpaces(board, space) {
-  let x = space.x;
-  let y = space.y;
-  let north;
-  let south;
-  let east;
-  let west;
-
-  if (y + 1 >= 0 )
-    north = y + 1;
-  if (y - 1 >= 0)
-    south = y - 1;
-  if (x + 1 >= 0)
-    console.log();
 }
 
 function Space(x, y) {
@@ -85,7 +61,7 @@ function Board(x, y) {
 
   this.spaces = spaces;
   this.rowLength = x;
-  this.colLenght = y;
+  this.colLength = y;
 }
 
 function getRow(board, rowNum) {
