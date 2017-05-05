@@ -4,9 +4,8 @@ html(lang='en')
     meta(charset='utf-8')
     meta(http-equiv='X-UA-Compatible', content='IE=edge')
     meta(name='viewport', content='width=device-width, initial-scale=1')
-    block description
+    block extra_head_info
     meta(name='author', content='Jackson Wearn')
-    block title
     // Bootstrap Core CSS
     link(href='vendor/bootstrap/css/bootstrap.min.css', rel='stylesheet')
     // Theme CSS
@@ -15,9 +14,9 @@ html(lang='en')
     link(href='vendor/font-awesome/css/font-awesome.min.css', rel='stylesheet', type='text/css')
     link(href='https://fonts.googleapis.com/css?family=Montserrat:400,700', rel='stylesheet', type='text/css')
     link(href='https://fonts.googleapis.com/css?family=Lato:400,700,400italic,700italic', rel='stylesheet', type='text/css')
-    block jsonLd
   body#page-top.index
     include header
     block content
     include contact
     include footer
+    block extra_scripts
