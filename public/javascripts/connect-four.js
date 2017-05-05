@@ -24,39 +24,15 @@ Game.prototype.takeTurn = function(colSelection) {
 };
 
 function scanBoardForConnections(board) {
-  let purpleSpaces = [];
-  let greenSpaces = [];
-  let connections = {
-    PURPLE: [],
-    GREEN: []
-  };;
-
-  board.spaces.forEach(function(col) {
-    let purp = col.filter(function(space) { return space.state === PURPLE; });
-    let green = col.filter(function(space) { return space.state === GREEN; });
-
-    if (purp.length) {
-      purp.forEach(function(space) { purpleSpaces.push(space); });
+  let spaces = board.spaces;
+  for(let x = 0; x < spaces.length; x++) {
+    let col = spaces[x];
+    for(let y = 0; y < col.length; y++) {
+      let space = spaces[x][y];
+      debugger;
     }
-
-    if (green.length) {
-      green.forEach(function(space) { greenSpaces.push(space); });
-    }
-  });
-
-  let purpleConnections = scanSpacesForConnections(purpleSpaces);
-  let greenConnections = scanSpacesForConnections(greenSpaces);
-
-  return connections;
-};
-
-function scanSpacesForConnections(spaces) {
-  var connections = [];
-  if (spaces.length) {
-    //debugger;
   }
-  return connections;
-}
+};
 
 function updateBoard(board, colSelection, color) {
   let col = getCol(board, colSelection);
