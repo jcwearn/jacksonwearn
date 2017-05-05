@@ -10,7 +10,7 @@ router.get('/', function(req, res, next) {
 });
 
 router.get('/connect-four', function(req, res, next) {
-  res.render('connect');
+  res.render('connect_four');
 });
 
 router.get('/google471c4d725062c531.html', function(req, res,  next) {
