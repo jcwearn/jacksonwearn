@@ -1,10 +1,11 @@
-function Game() {
-  this.board = new Board();
-};
-
 const EMPTY = 0;
 const PURPLE = 1;
 const GREEN = 2;
+
+function Game() {
+  this.board = new Board();
+  this.playerTurn = PURPLE;
+};
 
 function Space(x, y) {
   this.state = EMPTY;
