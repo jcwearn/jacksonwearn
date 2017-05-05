@@ -29,9 +29,13 @@ function Board(x, y) {
 }
 
 function getRow(board, rowNum) {
-  return board[rowNum];
+  let col = board.map(function(value) { return value[rowNum]; }).filter(n => n);
+  if (col.length)
+    return col;
 }
 
 function getCol(board, colNum) {
-  return board.map(function(value) { return value[colNum]; });
+  let row = board[colNum];
+  if(row && row.length)
+    return row;
 }
