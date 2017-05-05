@@ -1,6 +1,6 @@
 function Game() {
   this.board = new Board();
- };
+};
 
 const EMPTY = 0;
 const PURPLE = 1;
@@ -27,6 +27,6 @@ function Board(x, y) {
   this.spaces = spaces;
 }
 
-Board.prototype.getSpace = function(x, y) {
+Board.getSpace = function(x, y) {
   return this.spaces[x][y];
 };
