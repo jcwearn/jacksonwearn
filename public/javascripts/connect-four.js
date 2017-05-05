@@ -19,9 +19,25 @@ Game.prototype.takeTurn = function(colSelection) {
   this.turnCount++;
 };
 
-Game.prototype.scanForConnections = function() {
-  let board = this.board.spaces;
-  let connections = this.connections;
+function scanForConnections(board) {
+  let purpleSpaces = [];
+  let greenSpaces = [];
+  let connections = [];
+
+  board.spaces.forEach(function(col) {
+    let purp = col.filter(function(space) { return space.state === PURPLE; });
+    let green = col.filter(function(space) { return space.state === GREEN; });
+
+    if (purp.length) {
+      purp.forEach(function(space) { purpleSpaces.push(space); });
+    }
+
+    if (green.length) {
+      green.forEach(function(space) { greenSpaces.push(space); });
+    }
+  });
+
+  return connections;
 };
 
 function updateBoard(board, colSelection, color) {
@@ -60,8 +76,8 @@ function Board(x, y) {
   }
 
   this.spaces = spaces;
-  this.rowLength = x;
-  this.colLength = y;
+  this.rowLen = yMax;
+  this.colLen = xMax;
 }
 
 function getRow(board, rowNum) {
@@ -75,3 +91,10 @@ function getCol(board, colNum) {
   if(row && row.length)
     return row;
 }
+
+var game = new Game();
+game.takeTurn(0);
+game.takeTurn(0);
+game.takeTurn(0);
+game.takeTurn(0);
+game.scanForConnections();
