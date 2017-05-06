@@ -13,11 +13,6 @@ router.get('/connect-four', function(req, res, next) {
   res.render('connect_four');
 });
 
-router.get('/google471c4d725062c531.html', function(req, res,  next) {
-  var webmaster = path.join(__dirname, "../", "views", "google471c4d725062c531.html");
-  res.sendFile(webmaster);
-});
-
 router.post('/contact', function(req, res, next) {
   if(req.body && Object.keys(req.body).length === 4) {
     var from_email = process.env.EMAIL;
