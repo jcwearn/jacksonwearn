@@ -24,10 +24,16 @@ a.active {
     margin: 0;
     background-image:
     linear-gradient( rgba(0,0,0,.4), rgba(0,0,0,.4) ),
-    url('../images/background.jpg');    
+    url('../images/background.jpg');
     background-size: 100% 100%;
     background-repeat:no-repeat;
     height: 100vh;
+}
+.space {
+    width: 60px;
+    height: 60px;
+    background-color:white;
+    border: 1px solid black;
 }
 h1,
 h2,
