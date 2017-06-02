@@ -9,10 +9,6 @@ router.get('/', function(req, res, next) {
   res.render('index');
 });
 
-router.get('/connect-four', function(req, res, next) {
-  res.render('connect_four');
-});
-
 router.post('/contact', function(req, res, next) {
   if(req.body && Object.keys(req.body).length === 4) {
     var from_email = process.env.EMAIL;
