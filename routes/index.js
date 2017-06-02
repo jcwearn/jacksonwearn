@@ -6,13 +6,7 @@ var nodemailer = require('nodemailer');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  var index = path.join(__dirname, "../", "views", "index.html");
-  res.sendFile(index);
-});
-
-router.get('/google471c4d725062c531.html', function(req, res,  next) {
-  var webmaster = path.join(__dirname, "../", "views", "google471c4d725062c531.html");
-  res.sendFile(webmaster);
+  res.render('index');
 });
 
 router.post('/contact', function(req, res, next) {

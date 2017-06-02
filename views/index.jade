@@ -1,0 +1,38 @@
+extends layout
+
+block extra_head_info
+  title Jackson Wearn
+  meta(name='description', content='Jackson Wearn.  Full Stack Software Engineer')
+  meta(name='keywords', content='Jackson,Wearn,Jackson Wearn')
+  script(type='application/ld+json').
+    {
+      "@context": "http://schema.org",
+      "@type": "Person",
+      "name": "Jackson Wearn",
+      "jobTitle": "Software Engineer",
+      "image": "images/me.jpg",
+      "url": "http://jacksonwearn.com/",
+      "worksFor": "CareerBuilder",
+      "alumniOf": "University of Georgia"
+    }
+block content
+  header.me
+    .container
+      .row
+        .col-lg-12
+          img.img-responsive(src='images/me.jpg', alt='Jackson Wearn')
+          .intro-text
+            span.name Jackson Wearn
+            span.skills
+              | Full Stack Web Developer at
+              a.btn.btn-cb.btn-success(href='http://www.careerbuilder.com/') CareerBuilder
+  section#about.success
+    .container
+      .row
+        .col-lg-12.text-center
+          h2 About
+          hr
+      .row
+        .col-lg-6.col-lg-offset-3
+          p(style='text-align:center')
+            | Hi.  My name is Jackson. I am a Software Engineer for the Jobs UX and Services team at CareerBuilder.  I am a chronic tinkerer.  I read code, I write code, and I love expanding my technological arsenal.  I have a strong fondness for Node.js and Ruby, but I am always eager to try bleeding edge technologies.  Feel free to drop me a line if you’re interested in learning about my work experience, or if you just want to chat.
