@@ -3,9 +3,11 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./bin/www",
+    "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --recursive",
     "debug": "node debug ./bin/www",
-    "deploy": "./deploy/deploy.sh"
+    "deploy": "./deploy/deploy.sh",
+    "start": "node ./bin/www",
+    "test": "./node_modules/mocha/bin/mocha --recursive"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -16,5 +18,11 @@
     "morgan": "~1.6.1",
     "nodemailer": "^2.5.0",
     "serve-favicon": "^2.4.2"
+  },
+  "devDependencies": {
+    "expect.js": "^0.3.1",
+    "istanbul": "^0.4.5",
+    "mocha": "^3.4.2",
+    "proxyquire": "^1.8.0"
   }
 }
