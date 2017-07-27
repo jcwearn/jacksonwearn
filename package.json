@@ -6,6 +6,8 @@
     "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --recursive",
     "debug": "node debug ./bin/www",
     "deploy": "./deploy/deploy.sh",
+    "lint": "./node_modules/.bin/eslint ./*.js ./lib/**/*.js ./routes/**/*.js ./test/**/*.js",
+    "fix": "./node_modules/.bin/eslint ./*.js ./lib/**/*.js ./routes/**/*.js ./test/**/*.js --fix",
     "start": "node ./bin/www",
     "test": "./node_modules/mocha/bin/mocha --recursive"
   },
@@ -20,6 +22,7 @@
     "serve-favicon": "^2.4.2"
   },
   "devDependencies": {
+    "eslint": "^4.3.0",
     "expect.js": "^0.3.1",
     "istanbul": "^0.4.5",
     "mocha": "^3.4.2",
