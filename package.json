@@ -6,7 +6,8 @@
     "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --recursive",
     "debug": "node debug ./bin/www",
     "deploy": "./deploy/deploy.sh",
-    "lint": "./node_modules/.bin/eslint **/*.js --ignore-pattern 'node_modules/*'",
+    "lint": "./node_modules/.bin/eslint ./*.js ./lib/**/*.js ./routes/**/*.js ./test/**/*.js",
+    "fix": "./node_modules/.bin/eslint ./*.js ./lib/**/*.js ./routes/**/*.js ./test/**/*.js --fix",
     "start": "node ./bin/www",
     "test": "./node_modules/mocha/bin/mocha --recursive"
   },
