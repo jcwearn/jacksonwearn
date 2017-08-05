@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!--Import Google Icon Font-->
+    <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link type="text/css" rel="stylesheet" href="stylesheets/materialize.css"  media="screen,projection"/>
+
+    <!--Import style.css for custom styling-->
+    <link type="text/css" rel="stylesheet" href="stylesheets/api-tester.css"  media="screen,projection"/>
+
+    <!--Let browser know website is optimized for mobile-->
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  </head>
+
+  <body>
+    <nav class="blue darken-2">
+      <div class="nav-wrapper"></div>
+    </nav>
+    <div class="container">
+      <div class="row">
+        <div class="card-panel white" style="margin-top:20px">
+          <div style="margin-bottom:0 !important;" id="search" class="search-box row scrollspy">
+            <form action="" onsubmit="return false">
+              <div class="col m10">
+                <div class="input-field">
+                  <label for="api-route">Enter API to test</label>
+                  <input id="api-route" type="text" tabindex="1" name="api-route" value="https://api.coindesk.com/v1/bpi/currentprice.json">
+                </div>
+              </div>
+              <div class="col m2">
+                <button onclick="callAPI()" style="width:100%;margin-top:16px;" tabindex="2" class="waves-effect waves-light btn-large blue accent-2">Test</button>
+              </div>
+              <div class="col m12">
+                <div class="row">
+                  <div class="col m3 switch">
+                    <label>Staging<input type="checkbox" checked="true" name="environment" id="environment" onclick="toggleEnvironment()"><span class="lever"></span>Production</label>
+                  </div>
+                  <div class="input-field col m2">
+                    <select id="method">
+                      <option value="GET">GET</option>
+                      <option value="POST">POST</option>
+                      <option value="PUT">PUT</option>
+                      <option value="DELETE">DELETE</option>
+                      <option value="PATCH">PATCH</option>
+                    </select>
+                    <label>Method</label>
+                  </div>
+                  <div class="input-field col m2">
+                    <select id="content-type">
+                      <option value="application/json">JSON</option>
+                      <option value="application/xml">XML</option>
+                      <option value="application/x-www-form-urlencoded">FORM</option>
+                    </select>
+                    <label>Content-Type</label>
+                  </div>
+                  <div class="input-field col m2">
+                    <select id="accept">
+                      <option value="application/json">JSON</option>
+                      <option value="application/xml">XML</option>
+                    </select>
+                    <label>Accept</label>
+                  </div>
+                  <div class="input-field col m1">
+                    <label for="version">Version</label>
+                    <input id="version" type="text" tabindex="1" name="version" value="">
+                  </div>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <ul class="collapsible" data-collapsible="accordion">
+          <li>
+            <div class="collapsible-header text-align-center">Headers</div>
+            <div class="collapsible-body">
+              <div class="row">
+                <form action="" onsubmit="return false" id="header-form">
+                  <div class="col m5 offset-m1">
+                    <div class="input-field">
+                      <input id="key" type="text" tabindex="1" name="key" placeholder="key">
+                    </div>
+                  </div>
+                  <div class="col m5">
+                    <div class="input-field">
+                      <input id="value" type="text" tabindex="1" name="value" placeholder="value">
+                    </div>
+                  </div>
+                  <div class="col m1" style="margin-top:15px">
+                    <a class="btn-floating btn-medium waves-effect waves-light grey" id="header-add-button"><i class="material-icons">add</i></a>
+                  </div>
+                </form>
+              </div>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header">Body</div>
+            <div class="collapsible-body">
+              <textarea id="body"></textarea>
+            </div>
+          </li>
+          <li>
+            <div class="collapsible-header">cURL</div>
+            <div class="collapsible-body">
+              <div class="row">
+                <div class="col m2">
+                  <button onclick="generateCURL()" style="margin-top:15px; margin-left:15px" tabindex="2" class="waves-effect waves-light btn-large grey accent-2">Generate cURL</button>
+                </div>
+                <div class="col m10" style="margin-top:15px; margin-left:15px;">
+                  <code id="curl-area" ></code>
+                </div>
+              </div>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="row">
+        <div class="card-panel white">
+          <label for="response-area">Response</label>
+          <pre id="response-area"></pre>
+          <label for="headers-area">Headers</label>
+          <pre id="headers-area"></pre>
+        </div>
+      </div>
+
+    </div>
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+    <script type="text/javascript" src="javascripts/materialize.js"></script>
+    <script type="text/javascript" src="javascripts/grab_form_content.js"></script>
+    <script type="text/javascript" src="javascripts/generate_curl.js"></script>
+    <script type="text/javascript" src="javascripts/add_header.js"></script>
+    <script type="text/javascript" src="javascripts/call_api.js"></script>
+    <script type="text/javascript">
+      var number_of_headers = 0;
+      $(document).ready(function() {
+        $('select').material_select();
+        $('.collapsible').collapsible({
+          accordion : false // A setting that changes the collapsible behavior to expandable instead of the default accordion style
+        });
+      });
+
+      $("#header-add-button").click(function() {
+        add_header();
+      });
+
+      function toggleEnvironment() {
+        var current_url = $('input#api-route').val();
+        var updated_url;
+        if(current_url.indexOf('wwwtest.') >= 0) {
+          updated_url = current_url.replace('wwwtest.', '');
+        } else {
+          updated_url = current_url.replace('https://', 'https://wwwtest.');
+        }
+        $('input#api-route').val(updated_url);
+      }
+    </script>
+  </body>
+</html>
