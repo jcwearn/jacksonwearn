@@ -4,8 +4,8 @@ var APIController = require('../controllers/api_controller.js');
 var router = express.Router();
 
 router.get('/', function(req, res, next) {
-  var index = path.join(__dirname, "../", "views/index.html");
-  res.sendFile(index);
+  var apiTester = path.join(__dirname, "../", "views/api-tester.html");
+  res.sendFile(apiTester);
 });
 
 router.post('/callapi', function(req, res, next) {
