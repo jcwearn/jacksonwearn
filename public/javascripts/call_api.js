@@ -10,8 +10,11 @@ var callAPI = function() {
     success: function(data, textStatus, jqXHR) {
       var response = JSON.stringify(JSON.parse(data.body),null,2);
       var headers = JSON.stringify(data.headers,null,2);
-      $("pre#response-area").html(response);
-      $("pre#headers-area").html(headers);
+      $("code#response-area").html(response);
+      $("code#headers-area").html(headers);
+      $('pre code').each(function(i, block) {
+        hljs.highlightBlock(block);
+      });
     },
     error: function(jqXHR, textStatus, errorThrown) {
       console.log(jqXHR);

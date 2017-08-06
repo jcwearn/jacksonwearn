@@ -7,11 +7,11 @@ var generateCURL = function() {
   var version = formContent.version;
   var headers = formContent.headers;
   var body = formContent.body;
-  
+
   var cURL = "curl -X " + method +  " -H \"" + "Content-Type"  + ":" + contentType + "\"" + " -H \"" + "Accept"  + ":" + accept + "\"";
 
   if (version) {
-    
+
   }
 
   if (headers) {
@@ -28,4 +28,8 @@ var generateCURL = function() {
   cURL += " \"" + url + "\"";
 
   $("code#curl-area").html(cURL);
+  $("code#curl-area").each(function(i, block) {
+    hljs.highlightBlock(block);
+  });
+
 };
