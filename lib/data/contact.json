@@ -1,0 +1,33 @@
+[
+    {
+        "label": "Name",
+        "id": "name",
+        "type": "text",
+        "placeHolder": "Name",
+        "message": "Please enter your name.",
+        "hasTextArea": false
+    },
+    {
+        "label": "Email Address",
+        "id": "email",
+        "type": "email",
+        "placeHolder": "Email Address",
+        "message": "Please enter your email address.",
+        "hasTextArea": false
+    },
+    {
+        "label": "Phone Number",
+        "id": "phone",
+        "type": "tel",
+        "placeHolder": "Phone Number",
+        "message": "Please enter your phone number.",
+        "hasTextArea": false
+    },
+    {
+        "label": "Message",
+        "id": "message",
+        "placeHolder": "Message",
+        "message": "Please enter a message.",
+        "hasTextArea": true
+    }
+]
