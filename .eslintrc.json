@@ -1,7 +1,17 @@
 {
   "env": {
-    "node": true,
-    "es6": true
+    "es6": true,
+    "commonjs": true,
+    "node": true
+  },
+  "plugins": [
+    "react"
+  ],
+  "parserOptions": {
+    "ecmaVersion": 6,
+    "ecmaFeatures": {
+      "jsx": true
+    }
   },
   "extends": "eslint:recommended",
   "rules": {
@@ -11,7 +21,7 @@
     ],
     "indent": [
       "error",
-      "tab"
+      4
     ],
     "linebreak-style": [
       "error",
@@ -23,11 +33,17 @@
     "no-undef": "off",
     "quotes": [
       "error",
-      "double"
+      "single"
     ],
     "semi": [
       "error",
       "always"
     ]
+  },
+  "settings": {
+    "react": {
+      "pragma": "React",
+      "version": "16.4.0"
+    }
   }
 }
