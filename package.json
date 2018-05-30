@@ -8,6 +8,7 @@
     "coverage": "./node_modules/istanbul/lib/cli.js cover ./node_modules/mocha/bin/_mocha -- --recursive",
     "debug": "node debug ./bin/www",
     "deploy": "git push heroku master",
+    "dev": "npm run build-dev && node ./bin/www",
     "lint": "eslint .; exit 0",
     "lint-fix": "eslint --fix .; exit 0",
     "start": "npm run build && node ./bin/www",
@@ -32,6 +33,7 @@
     "react-redux": "^5.0.7",
     "redux": "^4.0.0",
     "redux-logger": "^3.0.6",
+    "redux-logic": "^0.13.0",
     "validator": "^10.2.0"
   },
   "devDependencies": {
