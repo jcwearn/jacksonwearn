@@ -17,15 +17,15 @@
     "node": "10.2.1"
   },
   "dependencies": {
-    "axios": "^0.18.0",
+    "axios": "^0.21.1",
     "babel-core": "^6.26.3",
     "babel-preset-react": "^6.24.1",
     "babelify": "^8.0.0",
     "body-parser": "^1.15.2",
     "browserify": "^16.2.2",
-    "debug": "~2.2.0",
-    "express": "~4.13.1",
-    "morgan": "~1.6.1",
+    "debug": "~2.6.9",
+    "express": "^4.17.1",
+    "morgan": "~1.9.1",
     "nodemailer": "^2.5.0",
     "react": "^16.4.0",
     "react-dom": "^16.4.0",
@@ -37,10 +37,10 @@
     "dotenv": "^5.0.1",
     "eslint": "^4.3.0",
     "eslint-plugin-react": "^7.8.2",
-    "exorcist": "^1.0.1",
+    "exorcist": "^2.0.0",
     "expect.js": "^0.3.1",
     "istanbul": "^0.4.5",
-    "mocha": "^3.4.2",
+    "mocha": "^8.3.2",
     "proxyquire": "^1.8.0"
   }
 }
